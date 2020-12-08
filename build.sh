@@ -4,7 +4,7 @@ HELM_RELEASE=$1
 
 set -euo pipefail
 
-export DOCKER_REPO=lwolf/helm-kubectl-docker
+export DOCKER_REPO=ghcr.io/mzehrer/helm-kubectl-docker
 export K8S_VERSION=$(curl -Ls -o /dev/null -w %{url_effective} https://github.com/kubernetes/kubernetes/releases/latest | cut -d '/' -f 8)
 if [ "$HELM_RELEASE" == "helm3" ];then
   export HELM_VERSION=$(curl -Ls https://github.com/helm/helm/releases | grep "/helm/helm/releases/tag/v3" | head -n 1 | sed 's/[^"]*"\([^"]*\)"[^"]*/\1/g' | cut -d '/' -f 6)
